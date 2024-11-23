@@ -1,5 +1,18 @@
 import React from 'react';
 
+/**
+ * Component that displays detailed information about a Pokemon
+ * @param {Object} props
+ * @param {Object} props.pokemon - Pokemon data object
+ * @param {string} [props.pokemon.name] - Name of the Pokemon
+ * @param {string} [props.pokemon.sprite] - URL of the Pokemon's sprite image
+ * @param {string[]} [props.pokemon.types] - Array of Pokemon types
+ * @param {number} [props.pokemon.height] - Height of the Pokemon in decimeters
+ * @param {number} [props.pokemon.weight] - Weight of the Pokemon in hectograms
+ * @param {string[]} [props.pokemon.abilities] - Array of Pokemon abilities
+ * @param {string} [props.pokemon.error] - Error message if Pokemon data fetch failed
+ * @returns {JSX.Element|null} A Pokemon information display or null if no Pokemon data
+ */
 function PokemonDisplay({ pokemon }) {
   if (!pokemon) return null;
 

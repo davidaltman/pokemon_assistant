@@ -2,10 +2,21 @@ import React, { useState } from 'react';
 import ChatBox from './components/ChatBox';
 import PokemonDisplay from './components/PokemonDisplay';
 
+/**
+ * Main application component for the Pokémon Assistant.
+ * Manages chat messages and Pokémon data state, handles communication with backend API.
+ * @component
+ * @returns {JSX.Element} The rendered App component
+ */
 function App() {
   const [messages, setMessages] = useState([]);
   const [pokemonData, setPokemonData] = useState(null);
 
+  /**
+   * Handles sending messages to the chat API and processes Pokemon-related queries.
+   * @param {string} message - The message sent by the user
+   * @returns {Promise<void>}
+   */
   const handleSendMessage = async (message) => {
     try {
       const response = await fetch('http://localhost:8000/api/chat', {

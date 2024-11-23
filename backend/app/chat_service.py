@@ -7,6 +7,24 @@ load_dotenv()
 client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 async def get_pokemon_response(message: str) -> str:
+    """
+    Generate a response about Pokemon based on user message using OpenAI's GPT model.
+
+    This function attempts to extract a Pokemon name from the user's message,
+    fetches relevant Pokemon data, and generates a detailed response using
+    the OpenAI chat completion API.
+
+    Args:
+        message (str): The user's input message containing a Pokemon-related query
+
+    Returns:
+        str: A detailed response about the Pokemon, or an error message if the
+             process fails
+
+    Raises:
+        Exception: Propagates any exceptions that occur during API calls or
+                  data processing
+    """
     try:
         # Try to extract Pokemon name from the message
         import re

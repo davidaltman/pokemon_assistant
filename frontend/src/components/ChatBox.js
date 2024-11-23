@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
 
+/**
+ * ChatBox component that displays a message history and input field for sending new messages
+ * @param {Object} props
+ * @param {Array<{type: string, content: string}>} props.messages - Array of message objects containing type and content
+ * @param {Function} props.onSendMessage - Callback function to handle sending new messages
+ * @returns {JSX.Element} A chat interface component
+ */
 function ChatBox({ messages, onSendMessage }) {
   const [input, setInput] = useState('');
 
+  /**
+   * Handles form submission for sending new messages
+   * @param {React.FormEvent} e - Form submission event
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim()) {
