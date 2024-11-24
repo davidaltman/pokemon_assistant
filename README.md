@@ -23,9 +23,13 @@ A web application that combines OpenAI's GPT with the PokéAPI to create an inte
 
 ## Prerequisites
 
-- Python 3.8+
+- Python 3.8-3.12
 - Node.js 14+
 - OpenAI API key
+
+## Environment
+This project was developed using Python 3.10.11 and Node.js 20.18.0
+It was also tested using Python 3.12 and Node.js 23
 
 ## Installation
 
