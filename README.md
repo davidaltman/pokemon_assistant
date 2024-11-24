@@ -134,4 +134,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 
 David Altman - gautamaltman@gmail.com
-Project Link: [https://github.com/yourusername/pokemon-assistant](https://github.com/yourusername/pokemon-assistant)
+Project Link: [https://github.com/davidaltman/pokemon_assistant](https://github.com/davidaltman/pokemon_assistant)
