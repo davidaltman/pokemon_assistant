@@ -91,6 +91,7 @@ pokemon-assistant/
     │   │   ├── ChatBox.js
     │   │   └── PokemonDisplay.js
     │   ├── App.js
+    │   ├── index.js
     │   └── index.css
     ├── public/
     │   └── index.html
