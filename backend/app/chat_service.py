@@ -6,6 +6,48 @@ from .pokemon_service import get_pokemon_data
 load_dotenv()
 client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+async def get_pokemon_name(message: str) -> str:
+    """
+    Extract a Pokemon name from a user message using OpenAI's GPT model,
+    handling misspellings and variations.
+
+    Args:
+        message (str): The user's input message that might contain a Pokemon name
+
+    Returns:
+        str: The correctly spelled Pokemon name, or empty string if no Pokemon
+             name is found
+    """
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo-0125",
+            messages=[
+                {
+                    "role": "system",
+                    "content": """You are a Pokemon name extractor.
+                    Your only job is to find Pokemon names in messages, even if they're misspelled.
+                    If you find a Pokemon name, return ONLY the correct spelling of the name in lowercase.
+                    If no Pokemon name is found, return 'none'.
+                    Examples:
+                    'Tell me about pikachu' -> 'pikachu'
+                    'What is pikachoo' -> 'pikachu'
+                    'What is the weather' -> 'none'"""
+                },
+                {
+                    "role": "user",
+                    "content": message
+                }
+            ],
+            temperature=0,
+            max_tokens=50
+        )
+
+        pokemon_name = response.choices[0].message.content.strip().lower()
+        return '' if pokemon_name == 'none' else pokemon_name
+
+    except Exception as e:
+        return ''
+
 async def get_pokemon_response(message: str) -> str:
     """
     Generate a response about Pokemon based on user message using OpenAI's GPT model.

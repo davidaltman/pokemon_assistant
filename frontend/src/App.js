@@ -34,11 +34,17 @@ function App() {
         { type: 'assistant', content: data.response }
       ]);
 
-      // Try to extract Pokemon name from message and fetch data
-      const pokemonName = message.toLowerCase().match(/(?:about|is|pokemon)\s+(\w+)/)?.[1];
-      if (pokemonName) {
-        const pokemonResponse = await fetch(`http://localhost:8000/api/pokemon/${pokemonName}`);
-        const pokemonData = await pokemonResponse.json();
+      // Use AI to find and correct Pokemon names in the message
+      const pokemonResponse = await fetch('http://localhost:8000/api/pokemon-from-message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message }),
+      });
+
+      const pokemonData = await pokemonResponse.json();
+      if (!pokemonData.error) {
         setPokemonData(pokemonData);
       }
     } catch (error) {
